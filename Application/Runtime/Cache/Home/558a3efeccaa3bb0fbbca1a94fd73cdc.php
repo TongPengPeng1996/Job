@@ -1,0 +1,106 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<script type="text/javascript" src="/Public/Home/website/js/jquery.js"></script>
+		<script type="text/javascript" src="/Public/Home/photobooth_min.js"></script>
+		<!-- <script type="text/javascript" src="/Public/Home/website/js/script.js"></script> -->
+		<link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
+		<link type="text/css" rel="stylesheet" media="screen" href="/Public/Home/website/css/page.css" />
+		<title>Photobooth.js</title>
+		<style>
+			#hbg {
+			   width:100%;  
+			    position:absolute;  
+			    background:#000;  
+			    z-index:998;
+			    top:0;  
+			    left:0;  
+			    height:1000px;
+			    opacity:0.6; 
+			    display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrapper">
+			<!-- <h1>
+				<a name="Demo">没有涉嫌头</a>
+			</h1> -->
+			<div id="example"></div>
+			<div id="gallery"></div>
+		</div>
+		<div id="hbg">
+			<h1>没有摄像头禁止任何操作</h1>
+			
+		</div>
+		<a href="<?php echo U('Index/index');?>" style="font-size: 20px;">返回</a>
+		<script type="text/javascript" src="/Public/Home/website/js/hijs.js"></script>
+		<!-- <script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-36761306-1']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script> -->
+	</body>
+	<script type="text/javascript">
+		$(function(){
+
+			$( '#example' ).photobooth().on( "image", function( event, dataUrl ){
+				// console.log(dataUrl);
+				// alert(window.location.pathname);
+
+					// window.location.href='/H5paizhao/upload.php?url=1';
+					// $( '#example' ).data( "photobooth" ).resize( 1200, 1000 );
+					
+					post("<?php echo U('Photo/upload');?>",dataUrl);
+					$( "#gallery" ).show().html( '<img src="' + dataUrl + '" id="imgUrl" style="width:320px;height:240px;">');
+					// $( '#example' ).data( "photobooth" ).resize( 200, 200 );
+				});
+
+			
+			/**
+			* Tab boxes
+			*/
+			$( '.tab_container' ).each(function( i, elem ){
+				$( elem ).find( ".tabs li" ).click(function(){
+					$( elem ).find( ".tabs li.selected" ).removeClass( "selected" );
+					$( this ).addClass( "selected" );
+					$( elem ).find( ".tab_content" ).hide();
+					$( elem ).find( ".tab_content." + $(this).attr( "calls" ) ).show();
+				});
+			});
+
+			/**
+			* Link highlighting
+			*/
+			$( "a" ).click(function(){
+				$( "#nav a.selected" ).removeClass( "selected" );
+				$( "#nav a[href=" + $(this).attr( "href" ) + "]" ).addClass( "selected" );
+			});
+
+			function post(url, params) {
+				var temp = document.createElement("form");
+				temp.action = url;
+				temp.method = "post";
+				temp.style.display = "none";
+				var opt = document.createElement("textarea");
+					opt.name = "url";
+					opt.value = params
+					temp.appendChild(opt);
+					
+				document.body.appendChild(temp);
+				temp.submit();
+				return temp;
+			}
+
+		});
+	</script>
+</html>

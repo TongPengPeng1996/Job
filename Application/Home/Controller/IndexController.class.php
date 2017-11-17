@@ -37,6 +37,22 @@ class IndexController extends BaseController {
     		array(
     			'name'=>'高德围栏',
     			'url' => 'Gaode/index'
+    		),
+    		array(
+    			'name'=>'高德路线图',
+    			'url' => 'Gaode/route'
+    		),
+    		array(
+    			'name'=>'H5拍照',
+    			'url' => 'Photo/index'
+    		),
+    		array(
+    			'name'=>'视频',
+    			'url' => 'Video/index'
+    		),
+    		array(
+    			'name'=>'小耗子',
+    			'url' => 'Mouse/index'
     		)
     	);
     	$this->assign('list',$list);
