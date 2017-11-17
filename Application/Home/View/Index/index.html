@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>工具List</title>
+</head>
+<style type="text/css">
+	ul li a {
+		font-size: 20px;
+		text-decoration:none;
+		color:black;
+	}
+	ul li {
+		margin-top: 10px;
+	}
+</style>
+<body>
+	<ul>
+		<volist name="list" id="vo">
+			<li>
+				<a href="{:U($vo['url'])}">{$vo.name}</a>		
+			</li>	
+		</volist>
+		
+	</ul>
+</body>
+</html>
