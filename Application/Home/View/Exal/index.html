@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Exal操作</title>
+</head>
+<body>
+	
+	<div>
+		<h1>导出数据</h1>
+		<a href="{:U('Exal/export')}" style="text-decoration:none;font-size: 20px;color:black;">点这里</a>	
+	</div>
+	<div>
+		<h1>导入数据</h1>
+		<form action="{:U('Exal/import')}" method="post" enctype="multipart/form-data">
+			<input type="file" name="excel">
+			<input type="submit" value="导入数据">
+		</form>
+	</div>
+</body>
+</html>

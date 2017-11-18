@@ -53,7 +53,11 @@ class IndexController extends BaseController {
     		array(
     			'name'=>'小耗子',
     			'url' => 'Mouse/index'
-    		)
+    		),
+            array(
+                'name'=>'Exal',
+                'url' => 'Exal/index'
+            )
     	);
     	$this->assign('list',$list);
     	$this->display();  
